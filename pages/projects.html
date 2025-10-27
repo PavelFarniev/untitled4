@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-<header class="header text-center py-4 shadow-sm bg-white">
+<a href="#main" class="skip-link">Пропустить к содержимому</a>
+
+<header class="header text-center py-4 shadow-sm bg-white sticky-top">
     <div class="container">
         <img src="../images/logo.png" alt="Логотип" class="header__logo mb-2">
         <h1 class="header__title">Артём Фарниев</h1>
@@ -21,7 +23,7 @@
     </div>
 </header>
 
-<main class="container my-5">
+<main id="main" class="container my-5">
     <section class="section-card p-4">
         <h2 class="section-title text-center mb-4">Мои проекты</h2>
 
@@ -36,8 +38,14 @@
         <!-- Карточки проектов -->
         <div class="row g-4" id="projects-container">
 
+            <!-- === Проект 1 === -->
             <div class="col-md-6 col-lg-4 project-card-container" data-category="html">
-                <a href="https://pavelfarniev.github.io/untitled2/index_v1.html"" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                <a href="https://pavelfarniev.github.io/untitled2/index_v1.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <picture>
+                        <source srcset="../images/project1-small.jpg" media="(max-width: 768px)">
+                        <source srcset="../images/project1-large.jpg" media="(min-width: 769px)">
+                        <img src="../images/project1-large.jpg" alt="Личный сайт" class="project-img card-img-top" loading="lazy">
+                    </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Личный сайт</h5>
                         <p class="card-text">HTML, CSS</p>
@@ -45,8 +53,14 @@
                 </a>
             </div>
 
+            <!-- === Проект 2 === -->
             <div class="col-md-6 col-lg-4 project-card-container" data-category="js">
-                <a href="https://app.weeek.net/sign-up?lang=ru&utm_source=blog&utm_medium=link&utm_campaign=best-to-do-list-apps" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                <a href="https://app.weeek.net/sign-up?lang=ru" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <picture>
+                        <source srcset="../images/project2-small.jpg" media="(max-width: 768px)">
+                        <source srcset="../images/project2-large.jpg" media="(min-width: 769px)">
+                        <img src="../images/project2-large.jpg" alt="Todo-приложение" class="project-img card-img-top" loading="lazy">
+                    </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Todo-приложение</h5>
                         <p class="card-text">JavaScript</p>
@@ -54,8 +68,14 @@
                 </a>
             </div>
 
+            <!-- === Проект 3 === -->
             <div class="col-md-6 col-lg-4 project-card-container" data-category="react">
                 <a href="https://react-shop-demo.netlify.app" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <picture>
+                        <source srcset="../images/project3-small.jpg" media="(max-width: 768px)">
+                        <source srcset="../images/project3-large.jpg" media="(min-width: 769px)">
+                        <img src="../images/project3-large.jpg" alt="Интернет-магазин" class="project-img card-img-top" loading="lazy">
+                    </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Интернет-магазин</h5>
                         <p class="card-text">React</p>
@@ -63,8 +83,14 @@
                 </a>
             </div>
 
+            <!-- === Проект 4 === -->
             <div class="col-md-6 col-lg-4 project-card-container" data-category="bootstrap">
-                <a href="https://pavelfarniev.github.io/untitled2/index.html"" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                <a href="https://pavelfarniev.github.io/untitled2/index.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <picture>
+                        <source srcset="../images/project4-small.jpg" media="(max-width: 768px)">
+                        <source srcset="../images/project4-large.jpg" media="(min-width: 769px)">
+                        <img src="../images/project4-large.jpg" alt="Портфолио" class="project-img card-img-top" loading="lazy">
+                    </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Портфолио</h5>
                         <p class="card-text">Bootstrap</p>
@@ -77,7 +103,7 @@
 </main>
 
 <footer class="footer text-center py-3 bg-white border-top shadow-sm">
-    <p>© 2025 Контакты</p>
+    <p>© 2025 <a href="../pages/contacts.html" class="text-decoration-none text-primary fw-semibold">Контакты</a></p>
 </footer>
 
 <!-- Bootstrap JS -->
@@ -90,23 +116,16 @@
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем активность со всех кнопок
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
             const filter = button.getAttribute('data-filter');
 
             projectCards.forEach(card => {
                 const category = card.getAttribute('data-category');
-
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
             });
         });
     });
 </script>
 </body>
-</html>
+</html

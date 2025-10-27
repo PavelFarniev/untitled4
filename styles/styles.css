@@ -1,10 +1,40 @@
-/* === ОСНОВНОЕ === */
 body {
     font-family: "Segoe UI", sans-serif;
-    background-color: #eef2f6; /* светло-серый фон */
+    background-color: #eef2f6;
+    color: #222;
+    margin: 0;
+    scroll-behavior: smooth;
 }
 
-/* === HEADER === */
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    background: #0d6efd;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: top 0.3s;
+    z-index: 1000;
+}
+.skip-link:focus { top: 10px; }
+
+/* Focus visible */
+:focus-visible {
+    outline: 3px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    padding-top: env(safe-area-inset-top);
+}
+
 .header__logo {
     width: 80px;
     height: 80px;
@@ -12,7 +42,7 @@ body {
 }
 
 .header__title {
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
     font-weight: bold;
     color: #222;
 }
@@ -24,18 +54,17 @@ body {
     font-weight: 500;
     transition: color 0.3s;
 }
-
 .nav__link:hover,
 .nav__link--active {
     color: #0d6efd;
     text-decoration: underline;
 }
 
-/* === ОБЩИЕ СЕКЦИИ === */
+/* Sections */
 .section-card {
     background-color: #fff;
     border-radius: 12px;
-    padding: 30px;
+    padding: clamp(20px, 3vw, 30px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     border: 1px solid #dee2e6;
 }
@@ -47,7 +76,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* === INTRO === */
+/* Intro */
 .intro__photo {
     width: 160px;
     height: 160px;
@@ -57,39 +86,55 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* === PROJECTS === */
-.project-card {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Projects grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.project-card,
+.project-card-link {
+    display: block;
     background-color: #f9fafb;
     border: 1px solid #d0d7de;
     border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    padding: 20px;
     color: #212529;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card-link:hover {
     transform: translateY(-5px);
     border-color: #0d6efd;
+    background-color: #fff;
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    background-color: #ffffff;
+}
+
+/* Contact */
+.contact-link {
     color: #0d6efd;
+    text-decoration: none;
 }
+.contact-link:hover { text-decoration: underline; }
 
-.project-card h5 {
-    font-weight: 600;
+/* Diary */
+.list-group-item {
+    border-radius: 6px;
     margin-bottom: 5px;
+    transition: 0.2s ease;
 }
-/* === FOOTER === */
-.footer {
-    background-color: #ffffff;
-    border-top: 1px solid #dee2e6;
-    margin-top: 50px;
+.list-group-item:hover { background-color: #f1f3f5; }
+
+.modal-content.section-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* === RESPONSIVE === */
+/* Responsive */
 @media (max-width: 768px) {
     .intro {
         flex-direction: column !important;
@@ -98,23 +143,19 @@ body {
     .intro__photo {
         margin-bottom: 20px;
     }
-    .section-card {
-        padding: 20px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
-/* === DIARY === */
-.list-group-item {
-    border-radius: 6px;
-    margin-bottom: 5px;
-    transition: 0.2s ease;
-}
 
-.list-group-item:hover {
-    background-color: #f1f3f5;
-}
-
-.modal-content.section-card {
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+/* High contrast */
+@media (prefers-contrast: more) {
+    body { background: #fff !important; color: #000 !important; }
+    .section-card { border: 2px solid #000; }
 }
