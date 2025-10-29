@@ -10,41 +10,43 @@
 <body>
 <a href="#main" class="skip-link">Пропустить к содержимому</a>
 
-<header class="header text-center py-4 shadow-sm bg-white sticky-top">
+<header class="header text-center py-4 shadow-sm bg-white sticky-top" role="banner">
     <div class="container">
         <img src="../images/logo.png" alt="Логотип" class="header__logo mb-2">
         <h1 class="header__title">Артём Фарниев</h1>
-        <nav class="nav justify-content-center mt-3">
+        <nav class="nav justify-content-center mt-3" aria-label="Главная навигация">
             <a href="../index.html" class="nav__link">Главная</a>
-            <a href="projects.html" class="nav__link nav__link--active">Проекты</a>
+            <a href="projects.html" class="nav__link nav__link--active" aria-current="page">Проекты</a>
             <a href="diary.html" class="nav__link">Дневник</a>
             <a href="contacts.html" class="nav__link">Контакты</a>
         </nav>
     </div>
 </header>
 
-<main id="main" class="container my-5">
+<main id="main" class="container my-5" role="main" aria-labelledby="projects-heading">
     <section class="section-card p-4">
-        <h2 class="section-title text-center mb-4">Мои проекты</h2>
+        <h2 id="projects-heading" class="section-title text-center mb-4">Мои проекты</h2>
 
         <!-- Фильтры -->
-        <div class="text-center mb-4">
-            <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">Все</button>
-            <button class="btn btn-outline-secondary me-2 filter-btn" data-filter="html">HTML</button>
-            <button class="btn btn-outline-success me-2 filter-btn" data-filter="js">JS</button>
-            <button class="btn btn-outline-warning filter-btn" data-filter="react">React</button>
+        <div class="text-center mb-4" role="region" aria-label="Фильтр проектов">
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all" aria-pressed="true">Все</button>
+            <button class="btn btn-outline-secondary me-2 filter-btn" data-filter="html" aria-pressed="false">HTML</button>
+            <button class="btn btn-outline-success me-2 filter-btn" data-filter="js" aria-pressed="false">JS</button>
+            <button class="btn btn-outline-warning filter-btn" data-filter="react" aria-pressed="false">React</button>
         </div>
 
-        <!-- Карточки проектов -->
-        <div class="row g-4" id="projects-container">
+        <!-- aria-live: статус фильтра -->
+        <div id="filter-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 
-            <!-- === Проект 1 === -->
-            <div class="col-md-6 col-lg-4 project-card-container" data-category="html">
-                <a href="https://pavelfarniev.github.io/untitled2/index_v1.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+        <!-- Карточки проектов -->
+        <div class="row g-4" id="projects-container" role="list" aria-label="Список проектов">
+
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="html" role="listitem" aria-label="Личный сайт — HTML, CSS">
+                <a href="https://pavelfarniev.github.io/untitled2/index_v1.html" target="_blank" class="card project-card shadow-sm text-decoration-none" rel="noopener">
                     <picture>
                         <source srcset="../images/project1-small.jpg" media="(max-width: 768px)">
                         <source srcset="../images/project1-large.jpg" media="(min-width: 769px)">
-                        <img src="../images/project1-large.jpg" alt="Личный сайт" class="project-img card-img-top" loading="lazy">
+                        <img src="../images/project1-large.jpg" alt="Скриншот личного сайта" class="project-img card-img-top" loading="lazy">
                     </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Личный сайт</h5>
@@ -53,13 +55,12 @@
                 </a>
             </div>
 
-            <!-- === Проект 2 === -->
-            <div class="col-md-6 col-lg-4 project-card-container" data-category="js">
-                <a href="https://app.weeek.net/sign-up?lang=ru" target="_blank" class="card project-card shadow-sm text-decoration-none">
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="js" role="listitem" aria-label="Todo-приложение — JavaScript">
+                <a href="https://app.weeek.net/sign-up?lang=ru" target="_blank" class="card project-card shadow-sm text-decoration-none" rel="noopener">
                     <picture>
                         <source srcset="../images/project2-small.jpg" media="(max-width: 768px)">
                         <source srcset="../images/project2-large.jpg" media="(min-width: 769px)">
-                        <img src="../images/project2-large.jpg" alt="Todo-приложение" class="project-img card-img-top" loading="lazy">
+                        <img src="../images/project2-large.jpg" alt="Скриншот Todo-приложения" class="project-img card-img-top" loading="lazy">
                     </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Todo-приложение</h5>
@@ -68,13 +69,12 @@
                 </a>
             </div>
 
-            <!-- === Проект 3 === -->
-            <div class="col-md-6 col-lg-4 project-card-container" data-category="react">
-                <a href="https://react-shop-demo.netlify.app" target="_blank" class="card project-card shadow-sm text-decoration-none">
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="react" role="listitem" aria-label="Интернет-магазин — React">
+                <a href="https://react-shop-demo.netlify.app" target="_blank" class="card project-card shadow-sm text-decoration-none" rel="noopener">
                     <picture>
                         <source srcset="../images/project3-small.jpg" media="(max-width: 768px)">
                         <source srcset="../images/project3-large.jpg" media="(min-width: 769px)">
-                        <img src="../images/project3-large.jpg" alt="Интернет-магазин" class="project-img card-img-top" loading="lazy">
+                        <img src="../images/project3-large.jpg" alt="Скриншот интернет-магазина" class="project-img card-img-top" loading="lazy">
                     </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Интернет-магазин</h5>
@@ -83,13 +83,12 @@
                 </a>
             </div>
 
-            <!-- === Проект 4 === -->
-            <div class="col-md-6 col-lg-4 project-card-container" data-category="bootstrap">
-                <a href="https://pavelfarniev.github.io/untitled2/index.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="bootstrap" role="listitem" aria-label="Портфолио — Bootstrap">
+                <a href="https://pavelfarniev.github.io/untitled2/index.html" target="_blank" class="card project-card shadow-sm text-decoration-none" rel="noopener">
                     <picture>
                         <source srcset="../images/project4-small.jpg" media="(max-width: 768px)">
                         <source srcset="../images/project4-large.jpg" media="(min-width: 769px)">
-                        <img src="../images/project4-large.jpg" alt="Портфолио" class="project-img card-img-top" loading="lazy">
+                        <img src="../images/project4-large.jpg" alt="Скриншот портфолио" class="project-img card-img-top" loading="lazy">
                     </picture>
                     <div class="card-body text-center">
                         <h5 class="card-title">Портфолио</h5>
@@ -102,30 +101,46 @@
     </section>
 </main>
 
-<footer class="footer text-center py-3 bg-white border-top shadow-sm">
+<footer class="footer text-center py-3 bg-white border-top shadow-sm" role="contentinfo">
     <p>© 2025 <a href="../pages/contacts.html" class="text-decoration-none text-primary fw-semibold">Контакты</a></p>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Скрипт фильтрации -->
 <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card-container');
+    (function () {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card-container');
+        const filterStatus = document.getElementById('filter-status');
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            const filter = button.getAttribute('data-filter');
+        function updateFilterStatus(text) {
+            filterStatus.textContent = text;
+        }
 
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                card.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+
+                const filter = button.getAttribute('data-filter');
+                let visibleCount = 0;
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const shouldShow = (filter === 'all' || category === filter);
+                    card.style.display = shouldShow ? '' : 'none';
+                    card.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+                    if (shouldShow) visibleCount++;
+                });
+
+                updateFilterStatus(`${visibleCount} проект(а/ов) показано.`);
             });
         });
-    });
+    })();
 </script>
 </body>
-</html
+</html>
